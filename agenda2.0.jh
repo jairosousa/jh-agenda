@@ -1,0 +1,36 @@
+entity Contact {
+	name String required,
+    phone String required,
+    email String
+}
+
+entity Usuario {
+	username String required,
+    email String required,
+    password String required,
+    enable Boolean
+}
+
+relationship ManyToOne {
+	Contact{email} to Usuario
+}
+
+relationship OneToMany {
+	Usuario{name} to Contact{username}
+}
+
+// defining multiple OneToMany relationships with comments
+
+
+// Set pagination options
+paginate Contact with pagination
+
+paginate Usuario with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+// angularSuffix * with mySuffix
